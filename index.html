@@ -2,46 +2,147 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Deltarune FR — Patch Applicator</title>
-  <p><strong>Avancement de la traduction :</strong> Textes et graphismes (UI/Menus) intégralement traduits en français. Les effets sonores restent en VO.</p>
+  <title>Deltarune Chapitre 5 FR — Patch Applicator</title>
   <style>
-    body { font-family: sans-serif; background: #111; color: #fff; padding: 20px; text-align: center; }
-    .box { border: 2px dashed #444; padding: 30px; margin: 20px auto; max-width: 500px; border-radius: 8px; }
-    input[type="file"] { margin: 10px 0; }
-    button { background: #008cba; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 4px; }
-    button:disabled { background: #555; cursor: not-allowed; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      color: #fff; 
+      text-align: center; 
+      background-color: #000;
+    }
+
+    /* Video d'arrière-plan */
+    #bg-video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -2;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    /* Calque d'assombrissement pour la vidéo */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .box { 
+      border: 2px dashed #5b42f3; 
+      background: rgba(18, 18, 24, 0.85); 
+      backdrop-filter: blur(6px);
+      padding: 30px; 
+      margin: 20px auto; 
+      max-width: 500px; 
+      border-radius: 12px; 
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    }
+
+    input[type="file"] { 
+      margin: 15px 0; 
+    }
+
+    button { 
+      background: #008cba; 
+      color: white; 
+      border: none; 
+      padding: 12px 24px; 
+      font-size: 16px; 
+      font-weight: bold;
+      cursor: pointer; 
+      border-radius: 6px; 
+      transition: background 0.2s;
+    }
+
+    button:hover:not(:disabled) {
+      background: #00a4db;
+    }
+
+    button:disabled { 
+      background: #555; 
+      cursor: not-allowed; 
+    }
+
+    .credits-box {
+      text-align: left; 
+      max-width: 600px; 
+      margin: 0 auto; 
+      line-height: 1.6;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 30px;
+      border-radius: 8px;
+    }
+
+    .credits-box a {
+      color: #008cba;
+      text-decoration: none;
+    }
+
+    .credits-box a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Patch FR pour Deltarune</h1>
-  <p>Applique la traduction FR directement sur ton fichier <code>data.win</code> sans envoi sur serveur.</p>
+  <!-- Vidéo en arrière-plan -->
+  <video autoplay loop muted playsinline id="bg-video">
+    <source src="background.mp4" type="video/mp4">
+  </video>
 
-  <div class="box">
-    <label>1. Sélectionne ton fichier <strong>data.win</strong> original :</label><br>
-    <input type="file" id="input-file" accept=".win"><br><br>
+  <div class="content">
 
-    <button id="patch-btn" disabled>Appliquer le Patch</button>
+    <h1>Patch FR pour Deltarune</h1>
+    <p><strong>Avancement de la traduction :</strong> Textes et graphismes (UI/Menus) intégralement traduits en français. Les effets sonores restent en VO.</p>
+    <p>Applique la traduction FR directement sur ton fichier <code>data.win</code> sans envoi sur serveur.</p>
+
+    <div class="box">
+      <label for="input-file">1. Sélectionne ton fichier <strong>data.win</strong> original :</label><br>
+      <input type="file" id="input-file" accept=".win"><br><br>
+
+      <button id="patch-btn" disabled>Appliquer le Patch</button>
+    </div>
+
+    <div id="status"></div>
+
+    <hr style="border: 0; border-top: 1px solid #444; margin: 40px auto; max-width: 600px;">
+
+    <div class="credits-box">
+      <h3> Crédits &amp; Remerciements</h3>
+      <p>
+        Ce travail s'appuie sur les ressources et traductions réalisées par la communauté 
+        <a href="https://deltarune-fr.com" target="_blank">Deltarune-fr.com</a>. 
+        Merci à l'ensemble des traducteurs et graphistes pour leur travail passionné.
+
+        Travail de traduction du Chapitre 5 par HazzAnim
+      </p>
+
+      <h3> Fichiers sources à disposition</h3>
+      <p>
+        Retrouvez dans les dossiers de ce dépôt GitHub l'intégralité des sources du projet : 
+        le fichier <code>string.json</code> nettoyé ainsi que les textures traduites classées par noms et identifiants d'<i>Embedded Textures</i>.
+      </p>
+    </div>
+
   </div>
-
-  <div id="status"></div>
-
-  <hr style="border: 0; border-top: 1px solid #333; margin: 40px 0;">
-
-<div style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-  <h3> Crédits & Remerciements</h3>
-  <p>
-    Ce travail s'appuie sur les ressources et traductions réalisées par la communauté 
-    <a href="https://deltarune-fr.com" target="_blank" style="color: #008cba;">Deltarune-fr.com</a>. 
-    Merci à l'ensemble des traducteurs et graphistes pour leur travail passionné.
-  </p>
-
-  <h3> Fichiers sources à disposition</h3>
-  <p>
-    Retrouvez dans les dossiers de ce dépôt GitHub l'intégralité des sources du projet : 
-    le fichier <code>string.json</code> nettoyé ainsi que les textures traduites classées par noms et identifiants d'<i>Embedded Textures</i>.
-  </p>
-</div>
 
   <!-- Librairie BPS exécutée en local -->
   <script src="https://cdn.jsdelivr.net/npm/marcthebridge@1.0.0/bps.js"></script>
@@ -59,7 +160,7 @@
     patchBtn.addEventListener('click', async () => {
       statusDiv.textContent = "Téléchargement du patch FR...";
       try {
-        // Charger le fichier .bps stocké sur ton GitHub
+        // Charger le fichier .bps provenant du GitHub
         const patchResponse = await fetch('patch.bps');
         const patchBuffer = new Uint8Array(await patchResponse.arrayBuffer());
 
@@ -68,10 +169,10 @@
         const targetBuffer = new Uint8Array(await targetFile.arrayBuffer());
 
         statusDiv.textContent = "Application du patch en cours...";
-        // Application du patch via BPS (exécuté sur le navigateur du client)
+        // Application du patch via BPS
         const patchedBuffer = BPS.applyPatch(targetBuffer, patchBuffer);
 
-        // Proposer le téléchargement du fichier patché
+        // Téléchargement du fichier patché
         const blob = new Blob([patchedBuffer], { type: 'application/octet-stream' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
