@@ -1,9 +1,9 @@
 Patch FR pour Deltarune (Textes & Graphismes)
 Ce patch traduit l'intégralité des dialogues, menus et graphismes en jeu (HUD, logos, UI) en français.
 
-⚠️ Note : Les doublages et effets sonores restent en version originale.
+Note : Les doublages et effets sonores restent en version originale.
 
-## 📜 Crédits & Remerciements
+## Crédits & Remerciements
 
 Un grand merci à la communauté **Deltarune-fr.com** ! Ce travail de traduction s'appuie et s'inspire directement des éléments déjà traduits par leurs équipes sur les chapitres précédents.
 
@@ -12,11 +12,11 @@ Un grand merci à la communauté **Deltarune-fr.com** ! Ce travail de traduction
 
 ---
 
-## 🛠️ Contenu du dépôt & Fichiers sources
+## Contenu du dépôt & Fichiers sources
 
 Afin d'aider la communauté Deltarune FR, les moddeurs ou de futurs traducteurs, l'intégralité des **fichiers sources** utilisés pour réaliser ce patch est mise à disposition dans ce dépôt :
 
-* 📄 **`string.json`** : Table complète des textes et dialogues traduits en français.
-* 🖼️ **Ressources graphiques** : L'ensemble des sprites et textures réinsérés, soigneusement classés par nom et par identifiant de textures intégrées (*Embedded Textures*).
+*  **`string.json`** : Table complète des textes et dialogues traduits en français.
+*  **Ressources graphiques** : L'ensemble des sprites et textures réinsérés, soigneusement classés par nom et par identifiant de textures intégrées (*Embedded Textures*).
 
 *Libre à vous de réutiliser ces sources pour vos propres outils ou corrections !*
