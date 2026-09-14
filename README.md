@@ -1,7 +1,11 @@
-Patch FR pour Deltarune (Textes & Graphismes)
+Patch FR Chapitre 5 pour Deltarune (Textes & Graphismes)
 Ce patch traduit l'intégralité des dialogues, menus et graphismes en jeu (HUD, logos, UI) en français.
 
 Note : Les doublages et effets sonores restent en version originale.
+
+## À Propos & Travail réalisé
+
+Tout le travail de traduction du Chapitre 5 à été réalisé par moi, HazzAnim. Je suis un traducteur dans le monde du cinéma habituellement, et voulant que ma copine puisse découvrir cet exceptionnel jeu (n'y comprenant pas un traitre mot à l'anglais) j'ai voulu apporter mon patch pour qu'elle puisse y jouer confortablement. Ainsi, en attendant le travail REMARQUABLE de la communauté Deltarune FR, je pose les bases ici. Ce n'est pas parfait, il y a très certainement des soucis au niveau du GUI, mais après un travail acharné, ceci doit bien respecté le Lore de DELTARUNE. Un grand merci à l'équipe Deltarune FR sans qui ce patch n'aurait jamais abouti par manque de contexte initial pour la traduction en Français ! 
 
 ## Crédits & Remerciements
 
@@ -9,6 +13,7 @@ Un grand merci à la communauté **Deltarune-fr.com** ! Ce travail de traduction
 
 * **Site officiel de la communauté :** [deltarune-fr.com](https://deltarune-fr.com)
 * **Projet d'origine :** Remerciements à tous les traducteurs, relecteurs et graphistes de la communauté FR pour leur investissement continu sur la licence. (Chapitre 1 à 4)
+Un Grand merci également à ** [@jjezewski](https://github.com/jjezewski) pour son outil qu'il a développé qui a grandement simplifié la créations des textures de Green https://green.tennaproject.com ainsi que le Github https://github.com/tennaproject/green vous permettront d'avoir les sources et mentions spéciales de son incroyable travail. Amusez-vous bien avec son outil !
 
 ---
 
