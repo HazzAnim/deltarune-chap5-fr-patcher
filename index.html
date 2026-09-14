@@ -161,38 +161,56 @@
     <p>Applique la traduction FR directement sur ton fichier <code>data.win</code> sans envoi sur serveur.</p>
 
 <div class="instructions-box">
-  <h2>📖 Guide d'installation du Patch FR</h2>
-  
-  <ol>
-    <li>
-      <strong>Prérequis — Trouver vos fichiers <code>data.win</code> originaux :</strong><br>
-      Rendez-vous dans le dossier d'installation de votre jeu (ex. via Steam : <em>Clic droit sur Deltarune &gt; Gérer &gt; Parcourir les fichiers locaux</em>).
-      <ul>
-        <li><strong>Jeu principal (Chapitre 5) :</strong> Se trouve à la racine du dossier du jeu sous le nom <code>data.win</code>.</li>
-        <li><strong>Menu principal :</strong> Si présent ou séparé selon votre version, vérifiez le fichier <code>data.win</code> situé dans le sous-dossier dédié au lanceur/menu.</li>
-      </ul>
-    </li>
+      <h2>📖 Guide d'installation du Patch FR</h2>
+      <ol>
+        <li>
+          <strong>Trouver vos fichiers <code>data.win</code> originaux :</strong><br>
+          Rendez-vous dans le dossier de votre jeu (ex. via Steam : <em>Clic droit sur Deltarune &gt; Gérer &gt; Parcourir les fichiers locaux</em>).
+          <ul>
+            <li><strong>Menu Principal :</strong> Se trouve dans le dossier du lanceur / menu principal.</li>
+            <li><strong>Chapitre 5 :</strong> Se trouve dans le sous-dossier ou dossier dédié au Chapitre 5.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Patcher vos fichiers ci-dessous :</strong><br>
+          Sélectionnez le fichier <code>data.win</code> correspondant dans l'encadré adéquat et cliquez sur <strong>"Appliquer le Patch"</strong>.
+        </li>
+        <li>
+          <strong>Remplacer dans le jeu :</strong><br>
+          Renommez vos fichiers d'origine en <code>data.win.bak</code> par sécurité, puis déplacez les nouveaux fichiers <code>data.win</code> téléchargés à leur place respectifiée.
+        </li>
+      </ol>
+    </div>
 
-    <li>
-      <strong>Patcher un fichier via ce site :</strong><br>
-      Cliquez sur <strong>"Choisir un fichier"</strong> ci-dessous, sélectionnez votre <code>data.win</code> original, puis cliquez sur <strong>"Appliquer le Patch"</strong>.
-    </li>
+    <div class="patch-container">
+      
+      <!-- Box 1 : Menu Principal -->
+      <div class="box">
+        <div>
+          <h3>1. Menu Principal</h3>
+          <p style="font-size: 0.85rem; color: #ccc;">Sélectionnez le <code>data.win</code> du menu principal du jeu (Celui se trouvant à la racine du dossier DELTARUNE).</p>
+          <input type="file" id="input-menu" accept=".win">
+        </div>
+        <div>
+          <button id="btn-menu" disabled>Appliquer le Patch Menu</button>
+          <div id="status-menu" class="status"></div>
+        </div>
+      </div>
 
-    <li>
-      <strong>Sauvegarde et remplacement des fichiers (Important) :</strong><br>
-      Une fois le patch appliqué, le navigateur télécharge automatiquement un nouveau fichier <code>data.win</code>.
-      <ul>
-        <li>Rendez-vous dans le dossier de votre jeu.</li>
-        <li>Renommez votre fichier original en <code>data.win.bak</code> (pour conserver une sauvegarde de secours).</li>
-        <li>Mettez le fichier fraîchement téléchargé à la place du <code>data.win</code> d'origine.</li>
-      </ul>
-    </li>
-  </ol>
+      <!-- Box 2 : Chapitre 5 -->
+      <div class="box">
+        <div>
+          <h3>2. Chapitre 5</h3>
+          <p style="font-size: 0.85rem; color: #ccc;">Sélectionnez le <code>data.win</code> principal du Chapitre 5. (Celui se trouvant dans le dossier chap5_windows dans le dossier DELTARUNE)</p>
+          <input type="file" id="input-chap5" accept=".win">
+        </div>
+        <div>
+          <button id="btn-chap5" disabled>Appliquer le Patch Chapitre 5</button>
+          <div id="status-chap5" class="status"></div>
+        </div>
+      </div>
 
-  <div class="note-warning">
-    ⚠️ <strong>Important pour le Menu Principal :</strong> Pensez à répéter cette même opération d'application de patch pour le <code>data.win</code> du menu principal afin de bénéficier des graphismes et textes traduits dès le lancement du jeu.
-  </div>
-</div>
+    </div>
 
 <!-- Zone d'injection du fichier .win -->
 <div class="box">
@@ -226,45 +244,66 @@
   </div>
 
   <!-- Librairie BPS exécutée en local -->
-  <script src="https://cdn.jsdelivr.net/npm/marcthebridge@1.0.0/bps.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marcthebridge@1.0.0/bps.js"></script>
   <script>
-    const fileInput = document.getElementById('input-file');
-    const patchBtn = document.getElementById('patch-btn');
-    const statusDiv = document.getElementById('status');
-
-    fileInput.addEventListener('change', () => {
-      if (fileInput.files.length > 0) {
-        patchBtn.disabled = false;
-      }
-    });
-
-    patchBtn.addEventListener('click', async () => {
-      statusDiv.textContent = "Téléchargement du patch FR...";
+    // Fonction générique d'application de patch BPS
+    async function applyPatchProcess(fileInput, statusDiv, patchFileName) {
+      statusDiv.style.color = "#fff";
+      statusDiv.textContent = "Téléchargement du fichier patch (.bps)...";
+      
       try {
-        // Charger le fichier .bps provenant du GitHub
-        const patchResponse = await fetch('patch.bps');
+        const patchResponse = await fetch(patchFileName);
+        if (!patchResponse.ok) throw new Error("Fichier .bps introuvable sur le serveur.");
+        
         const patchBuffer = new Uint8Array(await patchResponse.arrayBuffer());
 
-        statusDiv.textContent = "Lecture de data.win...";
+        statusDiv.textContent = "Lecture du fichier data.win local...";
         const targetFile = fileInput.files[0];
         const targetBuffer = new Uint8Array(await targetFile.arrayBuffer());
 
         statusDiv.textContent = "Application du patch en cours...";
-        // Application du patch via BPS
         const patchedBuffer = BPS.applyPatch(targetBuffer, patchBuffer);
 
-        // Téléchargement du fichier patché
+        // Déclenchement du téléchargement
         const blob = new Blob([patchedBuffer], { type: 'application/octet-stream' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
         link.download = "data.win";
         link.click();
 
-        statusDiv.textContent = "Patch appliqué avec succès ! Remplace ton data.win original par ce nouveau fichier.";
+        statusDiv.style.color = "#4caf50";
+        statusDiv.textContent = "Patch appliqué ! Nouveau data.win téléchargé.";
       } catch (err) {
         console.error(err);
-        statusDiv.textContent = "Erreur lors de l'application du patch. Vérifie que le fichier source est valide.";
+        statusDiv.style.color = "#f44336";
+        statusDiv.textContent = "Erreur : Vérifiez que le fichier sélectionné est valide.";
       }
+    }
+
+    // Gestion Encadré 1 : Menu Principal
+    const inputMenu = document.getElementById('input-menu');
+    const btnMenu = document.getElementById('btn-menu');
+    const statusMenu = document.getElementById('status-menu');
+
+    inputMenu.addEventListener('change', () => {
+      btnMenu.disabled = inputMenu.files.length === 0;
+    });
+
+    btnMenu.addEventListener('click', () => {
+      applyPatchProcess(inputMenu, statusMenu, 'patch_menu.bps');
+    });
+
+    // Gestion Encadré 2 : Chapitre 5
+    const inputChap5 = document.getElementById('input-chap5');
+    const btnChap5 = document.getElementById('btn-chap5');
+    const statusChap5 = document.getElementById('status-chap5');
+
+    inputChap5.addEventListener('change', () => {
+      btnChap5.disabled = inputChap5.files.length === 0;
+    });
+
+    btnChap5.addEventListener('click', () => {
+      applyPatchProcess(inputChap5, statusChap5, 'patch_chap5.bps');
     });
   </script>
 </body>
