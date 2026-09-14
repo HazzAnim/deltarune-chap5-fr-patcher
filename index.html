@@ -163,21 +163,23 @@
 <div class="instructions-box">
       <h2>📖 Guide d'installation du Patch FR</h2>
       <ol>
+        <p>IMPORTANT Avant de commencer :</p>
+        <p>Voulant installer ce patch, je considère que vous avez déjà installé le patch Deltarune FR. Cela n'ayant aucune importance pour le chapitre 5 en lui-même, vous nez pourrez pas patcher le data.win du menu principal SANS avoir installé le patch FR. En effet, j'ai créer le patch en me basant du fichier data.win du menu PATCHÉ par la communauté Deltarune FR. Pensez donc à installer le patch FR AVANT d'installer celui-ci.</p>
         <li>
-          <strong>Trouver vos fichiers <code>data.win</code> originaux :</strong><br>
+          <strong>Trouvez vos fichiers <code>data.win</code> originaux :</strong><br>
           Rendez-vous dans le dossier de votre jeu (ex. via Steam : <em>Clic droit sur Deltarune &gt; Gérer &gt; Parcourir les fichiers locaux</em>).
           <ul>
-            <li><strong>Menu Principal :</strong> Se trouve dans le dossier du lanceur / menu principal.</li>
-            <li><strong>Chapitre 5 :</strong> Se trouve dans le sous-dossier ou dossier dédié au Chapitre 5.</li>
+            <li><strong>(Non obligatoire mais c'est un + pour avoir le titre du Chapitre traduit) Menu Principal :</strong> Se trouve dans le dossier du lanceur / Racine de DELTARUNE.</li>
+            <li><strong>Chapitre 5 :</strong> Se trouve dans le sous-dossier dédié au Chapitre 5 (chapter5_windows).</li>
           </ul>
         </li>
         <li>
-          <strong>Patcher vos fichiers ci-dessous :</strong><br>
+          <strong>Patchez vos fichiers ci-dessous :</strong><br>
           Sélectionnez le fichier <code>data.win</code> correspondant dans l'encadré adéquat et cliquez sur <strong>"Appliquer le Patch"</strong>.
         </li>
         <li>
-          <strong>Remplacer dans le jeu :</strong><br>
-          Renommez vos fichiers d'origine en <code>data.win.bak</code> par sécurité, puis déplacez les nouveaux fichiers <code>data.win</code> téléchargés à leur place respectifiée.
+          <strong>Remplacez dans le jeu :</strong><br>
+          Renommez vos fichiers d'origine en <code>data.win.bak</code> par sécurité, puis déplacez les nouveaux fichiers <code>data.win</code> téléchargés à leur place respectives.
         </li>
       </ol>
     </div>
@@ -212,14 +214,6 @@
 
     </div>
 
-<!-- Zone d'injection du fichier .win -->
-<div class="box">
-  <label for="input-file">Sélectionnez le fichier <strong>data.win</strong> à patcher :</label><br>
-  <input type="file" id="input-file" accept=".win"><br><br>
-
-  <button id="patch-btn" disabled>Appliquer le Patch</button>
-</div>
-
     <div id="status"></div>
 
     <hr style="border: 0; border-top: 1px solid #444; margin: 40px auto; max-width: 600px;">
@@ -230,8 +224,12 @@
         Ce travail s'appuie sur les ressources et traductions réalisées par la communauté 
         <a href="https://deltarune-fr.com" target="_blank">Deltarune-fr.com</a>. 
         Merci à l'ensemble des traducteurs et graphistes pour leur travail passionné.
-
-        Travail de traduction du Chapitre 5 par HazzAnim
+      </p>
+      <p>
+        Un Grand merci également à <a href="https://github.com/jjezewski" target="_blank_">@jjezewski</a> pour son outil qu'il a développé qui a grandement simplifié la créations des textures de Green. <a href="https://green.tennaproject.com" target="_blank">Son projet</a> ainsi que le <a href="https://github.com/tennaproject/green" target="_blank">Github</a> vous permettront d'avoir les sources et mentions spéciales de son incroyable travail. Amusez-vous bien avec son outil !
+      </p>
+      <p>
+        Tout le travail de traduction du Chapitre 5 à été réalisé par moi, HazzAnim. Je suis un traducteur dans le monde du cinéma habituellement, et voulant que ma copine puisse découvrir cet exceptionnel jeu (n'y comprenant pas un traitre mot à l'anglais) j'ai voulu apporter mon patch pour qu'elle puisse y jouer confortablement. Ainsi, en attendant le travail REMARQUABLE de la communauté Deltarune FR, je pose les bases ici. Ce n'est pas parfait, il y a très certainement des soucis au niveau du GUI, mais après un travail acharné, ceci doit bien respecté le Lore de DELTARUNE. Un grand merci à l'équipe Deltarune FR sans qui ce patch n'aurait jamais abouti par manque de contexte initial pour la traduction en Français !
       </p>
 
       <h3> Fichiers sources à disposition</h3>
