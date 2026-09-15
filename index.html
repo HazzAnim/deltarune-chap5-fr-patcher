@@ -27,7 +27,6 @@
       object-fit: cover;
     }
 
-    /* Calque d'assombrissement pour la vidéo */
     body::before {
       content: "";
       position: fixed;
@@ -35,8 +34,15 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.65);
+  
+      background: radial-gradient(
+        circle at center, 
+        rgba(0, 0, 0, 0) 35%,         /* 100% transparent au centre (soleil) */
+        rgba(0, 0, 0, 0.4) 60%,       /* Légèrement assombri à mi-chemin */
+        rgba(18, 18, 24, 0.85) 100%   /* Sombre sur les bordures extérieures */
+      );
       z-index: -1;
+      pointer-events: none;
     }
 
     .content {
